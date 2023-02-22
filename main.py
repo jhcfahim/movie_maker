@@ -1,5 +1,7 @@
 # Function
-def yes_no(question): # response for instructions
+
+
+def yes_no(question):  # response for instructions
 
   while True:
     response = input(question).lower()
@@ -12,7 +14,7 @@ def yes_no(question): # response for instructions
       print("Please enter yes or no")
 
 
-def not_blank(question): # makes sure name can't be empty
+def not_blank(question):  # makes sure name can't be empty
 
   while True:
     response = input(question)
@@ -23,7 +25,7 @@ def not_blank(question): # makes sure name can't be empty
       return response
 
 
-def num_check(question): # checks that user puts in an integer for age
+def num_check(question):  # checks that user puts in an integer for age
 
   while True:
 
@@ -35,7 +37,18 @@ def num_check(question): # checks that user puts in an integer for age
       print("Please enter an integer.")
 
 
+def calc_ticket_price(var_age):
+
+  if var_age < 16:
+    price = 7.5
+
+  elif var_age < 65:
+    price = 10.5
+  else:
+    price = 6.5
+  return price
 # Main Routine
+
 want_instructions = yes_no("Do you want instructions? (yes/no) ").lower()
 
 if want_instructions == "yes":
@@ -43,7 +56,6 @@ if want_instructions == "yes":
 
 print("We are done")
 
-# Ticket Looping
 MAX_TICKETS = 3
 tickets_sold = 0
 
@@ -61,6 +73,9 @@ while tickets_sold < MAX_TICKETS:
   else:
     print("Please try again.")
     continue
+
+  ticket_cost = calc_ticket_price(age)
+  print(f"Age: {age}, Ticket price: {ticket_cost} ")
 
   tickets_sold += 1
 
