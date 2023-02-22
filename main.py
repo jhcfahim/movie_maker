@@ -1,3 +1,6 @@
+import pandas
+
+
 # Function
 
 
@@ -7,8 +10,10 @@ def yes_no(question):  # response for instructions
     response = input(question).lower()
 
     if response == "yes" or response == "y":
+      print("You chose yes")
       return "yes"
     elif response == "no" or response == "n":
+      print("You chose no")
       return "no"
     else:
       print("Please enter yes or no")
@@ -47,14 +52,28 @@ def calc_ticket_price(var_age):
   else:
     price = 6.5
   return price
+
+
+def cash_credit(question):
+
+  while True:
+    response = input(question).lower()
+
+    if response == "cash" or response == "ca":
+      return "cash"
+    elif response == "credit" or response == "cr":
+      return "credit"
+    else:
+      print("Plesae choose a valid payment method")
+
+
 # Main Routine
 
 want_instructions = yes_no("Do you want instructions? (yes/no) ").lower()
 
 if want_instructions == "yes":
+  print("You chose yes")
   print("Instructions go here")
-
-print("We are done")
 
 MAX_TICKETS = 3
 tickets_sold = 0
@@ -76,6 +95,8 @@ while tickets_sold < MAX_TICKETS:
 
   ticket_cost = calc_ticket_price(age)
   print(f"Age: {age}, Ticket price: {ticket_cost} ")
+
+  pay_method = cash_credit("Choose a payment method (cash / credit): ")
 
   tickets_sold += 1
 
