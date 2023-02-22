@@ -1,5 +1,5 @@
 # Function
-def yes_no(question):
+def yes_no(question): # response for instructions
 
   while True:
     response = input(question).lower()
@@ -12,7 +12,7 @@ def yes_no(question):
       print("Please enter yes or no")
 
 
-def not_blank(question):
+def not_blank(question): # makes sure name can't be empty
 
   while True:
     response = input(question)
@@ -21,6 +21,18 @@ def not_blank(question):
       print("Sorry, your name can't be blank. Please try again")
     else:
       return response
+
+
+def num_check(question): # checks that user puts in an integer for age
+
+  while True:
+
+    try:
+      response = int(input(question))
+      return response
+
+    except ValueError:
+      print("Please enter an integer.")
 
 
 # Main Routine
@@ -37,9 +49,18 @@ tickets_sold = 0
 
 while tickets_sold < MAX_TICKETS:
   name = not_blank("Please enter your name or 'xxx' to quit: ")
-
   if name == "xxx":
     break
+
+  age = num_check(("Age: "))
+  if 12 <= age <= 120:
+    pass
+  elif age < 12:
+    print("Sorry you are too young for this movie.")
+    continue
+  else:
+    print("Please try again.")
+    continue
 
   tickets_sold += 1
 
